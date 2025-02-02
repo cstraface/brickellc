@@ -2,9 +2,27 @@ import packageJson from '../../../package.json';
 import * as bin from './index';
 
 export const go = async (_args: string[]): Promise<string> => {
-  const commands = Object.keys(bin).sort().join('  |  ');
+  // Custom priority order
+  const customOrder = ["about", "shopify_experts", "eagle_creek_security", "contact", "linkedin", "instagram", "github"];
 
-  return `Choose from the list of commands:\n\n${commands}\n\n[tab]\t trigger completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`;
+  // Commands to ignore
+  const ignoreCommands = ["go", "homepage"]; // Add any commands you want to exclude
+
+  // Get dynamically generated commands, excluding ignored ones
+  const commands = Object.keys(bin).filter(cmd => !ignoreCommands.includes(cmd));
+
+  // Custom sorting logic
+  const sortedCommands = commands.sort((a, b) => {
+    const indexA = customOrder.indexOf(a);
+    const indexB = customOrder.indexOf(b);
+
+    if (indexA === -1 && indexB === -1) return a.localeCompare(b); // Alphabetical if both aren't in customOrder
+    if (indexA === -1) return 1;  // Move non-prioritized items to the end
+    if (indexB === -1) return -1; // Prioritize items in customOrder
+    return indexA - indexB; // Sort based on customOrder position
+  }).join('  |  ');
+
+  return `Choose from the list of commands:\n\n${sortedCommands}\n\n[tab]\t trigger completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`;
 };
 
 //export const echo = async (args: string[]): Promise<string> => {
