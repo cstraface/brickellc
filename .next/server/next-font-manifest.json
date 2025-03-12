@@ -1,1 +1,16 @@
-{"pages":{},"app":{},"appUsingSizeAdjust":false,"pagesUsingSizeAdjust":false}
+{
+  "app": {
+    "[project]/app/(dashboard)/page": [
+      "static/media/xn7gYHE41ni1AdIRggexSvfedN4-s.p.3750ae10.woff2"
+    ],
+    "[project]/app/(dashboard)/pricing/page": [
+      "static/media/xn7gYHE41ni1AdIRggexSvfedN4-s.p.3750ae10.woff2"
+    ],
+    "[project]/app/(dashboard)/contact/page": [
+      "static/media/xn7gYHE41ni1AdIRggexSvfedN4-s.p.3750ae10.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

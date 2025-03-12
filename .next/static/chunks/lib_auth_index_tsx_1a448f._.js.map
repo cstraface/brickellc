@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/cstraface/brickellc/brickellc/lib/auth/index.tsx"],"sourcesContent":["'use client';\n\nimport { createContext, useContext, ReactNode } from 'react';\nimport { User } from '@/lib/db/schema';\n\ntype UserContextType = {\n  userPromise: Promise<User | null>;\n};\n\nconst UserContext = createContext<UserContextType | null>(null);\n\nexport function useUser(): UserContextType {\n  let context = useContext(UserContext);\n  if (context === null) {\n    throw new Error('useUser must be used within a UserProvider');\n  }\n  return context;\n}\n\nexport function UserProvider({\n  children,\n  userPromise\n}: {\n  children: ReactNode;\n  userPromise: Promise<User | null>;\n}) {\n  return (\n    <UserContext.Provider value={{ userPromise }}>\n      {children}\n    </UserContext.Provider>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;;;AAFA;;AASA,MAAM,4BAAc,CAAA,GAAA,8VAAA,CAAA,gBAAa,AAAD,EAA0B;AAEnD,SAAS;;IACd,IAAI,UAAU,CAAA,GAAA,8VAAA,CAAA,aAAU,AAAD,EAAE;IACzB,IAAI,YAAY,MAAM;QACpB,MAAM,IAAI,MAAM;IAClB;IACA,OAAO;AACT;GANgB;AAQT,SAAS,aAAa,EAC3B,QAAQ,EACR,WAAW,EAIZ;IACC,qBACE,8XAAC,YAAY,QAAQ;QAAC,OAAO;YAAE;QAAY;kBACxC;;;;;;AAGP;KAZgB"}},
+    {"offset": {"line": 45, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
